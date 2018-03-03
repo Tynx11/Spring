@@ -14,6 +14,7 @@ package hello;
 @SpringBootApplication
 @ComponentScan ({"hello.controller","hello.service","hello.repository"})
 @EnableJpaRepositories({"hello.repository"})
+@EntityScan(basePackages = "hello.model")
 
 public class Application {
     public static void main(String[] args) {

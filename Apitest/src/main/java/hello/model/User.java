@@ -1,8 +1,15 @@
 package hello.model;
 
+import lombok.*;
+
 import javax.persistence.*;
 
 @Entity
+@AllArgsConstructor
+@Builder
+@Getter
+@Setter
+@NoArgsConstructor
 @Table (name = "users")
 public class User {
 
