@@ -11,6 +11,9 @@ public class User {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private long id;
 
+    public long getId() {
+        return id;
+    }
 
     @Column(name = "login",nullable = false, unique = true)
     private String login;
@@ -18,7 +21,8 @@ public class User {
 
     public User(String login) {
         this.login = login;
-
+        this.id = getId();
+        this.age = getAge();
     }
 
 
@@ -30,5 +34,16 @@ public class User {
         this.login = login;
     }
 
+    @Column(name = "age", nullable = false, unique = false)
+    private int age;
+
+    public int getAge() {
+        return age;
+    }
+
+    public void setAge(int age) {
+        this.age = age;
+    }
 }
+
 

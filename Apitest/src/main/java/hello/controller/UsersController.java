@@ -3,9 +3,11 @@ package hello.controller;
 import hello.model.User;
 import hello.repository.UserRepository;
 import hello.service.UserService;
+import hello.service.impl.UserServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
@@ -16,11 +18,17 @@ public class UsersController  {
     @Autowired
     UserService userService;
 
-    @RequestMapping(value = "/user")
-    public User getUser (@RequestParam (value="login", defaultValue="null") Model model,String login) {
-        model.addAttribute("users", userService.getInfoByLogin(login));
-        return  new User(login);
+    @GetMapping(value = "/user")
+    public User getUser (@RequestParam (value="login", defaultValue="null") String login) {
+        return userService.getInfoByLogin(login)  ;
+    }
 
+
+
+    @RequestMapping(value = "/all") // /users/all
+    public String showAllUsers(Model model) {
+        model.addAttribute("users", userService.getAllUsers());
+        return "all-users";
     }
 
 }
