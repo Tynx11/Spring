@@ -12,6 +12,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.ArrayList;
+import java.util.List;
+
 @RestController
 public class UsersController  {
 
@@ -26,9 +29,11 @@ public class UsersController  {
 
 
     @RequestMapping(value = "/all") // /users/all
-    public String showAllUsers(Model model) {
+    public List<User> showAllUsers(Model model) {
         model.addAttribute("users", userService.getAllUsers());
-        return "all-users";
+        return userService.getAllUsers();
     }
+
+
 
 }

@@ -6,6 +6,7 @@ import javax.persistence.*;
 @Table (name = "users")
 public class User {
 
+
     @Id
     @Column(name = "id")
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -25,6 +26,9 @@ public class User {
         this.age = getAge();
     }
 
+    public User() {
+
+    }
 
     public String getLogin() {
         return login;
